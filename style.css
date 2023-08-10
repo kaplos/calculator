@@ -1,0 +1,96 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+#display{
+    width: 5in;
+    height: 1.5in;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    border: .025in solid black;
+}
+#Backspace{
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+#display-result{
+    display: flex;
+    align-items: center;
+    margin: 15px;
+    background-color: white;
+    width: 4.5;
+    height: 1;
+    font-size: 30px;
+    
+}
+#calc-body{
+    display: flex;
+    flex-direction: column;
+    margin: 3.5in;
+    height: 7in;
+    
+}
+.button-holder{
+    display: flex;
+    flex-direction: column;
+    height: 4in;
+    width: 5in;
+    flex: 1;
+    border: .025in solid black;
+}
+.row,
+.row button{
+    display: flex;
+    flex: 1;
+}
+#zero{
+   flex: 2;
+   border-radius:50px;
+}
+.button-holder button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+}
+.operand,
+.operator,
+.special, 
+.equals{
+    background-color: gray;
+    color: white;
+    font-size: 15px;
+    margin: 1mm;
+}
+.operator,
+.equals{
+    background-color: orange;
+    font-size: 20px;
+    margin: 1mm;
+}
+.special{
+    margin: 1mm;
+    font-size: 20px;
+    background-color: silver;
+}
+#row-5{
+    justify-self: space-evenly;
+}
+@media (max-width: 767px){
+    #display-result,
+    #calc-body,
+    .button-holder,
+    #display{
+        max-width: 4.5in;
+        width: 2.5in;
+        
+    }
+    #button-holder{
+        height: 3in;
+        max-height: 3.5in;
+    }
+    
+}
