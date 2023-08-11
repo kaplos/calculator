@@ -11,6 +11,7 @@ document.querySelectorAll("button").forEach(element => {
             });
         });
 function eventDecider(element){
+            if(element==null){}
             if(element.classList[0] == "operator"){
                 let operator2 = element.value;
                 if(continueOperations==2){
@@ -56,6 +57,7 @@ function eventDecider(element){
                     clacDisplay.textContent = displayArray.join("");
         }
     document.addEventListener('keydown',(event)=>{
+        
         if(event.key=="0"){
             eventDecider(document.getElementById("zero"));
         }
