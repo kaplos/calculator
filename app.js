@@ -18,14 +18,12 @@ function eventDecider(element){
                     constNumber(operationArray);
                     operationArray = [];
                     operator = operator2;
-                    continueOperations--;
+                    continueOperations=1;
                 }
                 if(continueOperations == 1){
-                    operator = element.value;
-                    continueOperations++
+                    operator = element.value ;  
+                    continueOperations=2;
                 }
-            }else{
-
             }
             if(element.value == "clear" ){
                 operationArray = [];
@@ -42,7 +40,7 @@ function eventDecider(element){
             }
             if(element.value == "equals" ){
                 constNumber(operationArray);
-                operationArray.length=[];
+                operationArray = [];
                 //clacDisplay.textContent="";
                 //clacDisplay.textContent = firstNumResult;
             }
@@ -83,21 +81,19 @@ function eventDecider(element){
     let firstNum;
     let secondNum;
     secondNum  = Number(Array.splice(indexOfOperator+1,Array.length).join(""));
-    if(indexOfOperator -1 == -1){
-        firstNum = firstNumResult;
-        calculate(firstNumResult,operator,secondNum);
-    }else{
-        firstNum = Number(Array.splice(0,indexOfOperator).join(""));
-    }
-    //isNaN(Array.splice(indexOfOperator+1,Array.length).join(""))? console.error("no number"):
-    //isNaN(Array.splice(0,indexOfOperator).join(""))? console.error("no number"):
-     
-    
+        if(indexOfOperator -1 == -1){
+            firstNum = firstNumResult;
+            calculate(firstNumResult,operator,secondNum);
+            
+        }else{
+            firstNum = Number(Array.splice(0,indexOfOperator).join(""));
+            
+        }
     calculate(firstNum,operator,secondNum);
+    continueOperations=1;
     console.log(firstNum);
     console.log(operator);
     console.log(secondNum);
-    clacDisplay.textContent = firstNumResult;
     console.log(firstNumResult);
     }
     function calcMod(modNum){
