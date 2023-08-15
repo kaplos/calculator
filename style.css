@@ -12,6 +12,7 @@ body{
     display: flex;
     align-items: center;
     border: .025in solid black;
+    font-family: sans-serif;
 }
 #Backspace{
     display: flex;
@@ -58,6 +59,7 @@ body{
 .row button{
     display: flex;
     flex: 1;
+    font-family: sans-serif;
 }
 #zero{
    flex: 2;
@@ -68,6 +70,7 @@ body{
     align-items: center;
     justify-content: center;
     border-radius: 50px;
+    font-family: sans-serif;
 }
 .operand,
 .operator,
@@ -77,6 +80,7 @@ body{
     color: white;
     font-size: 15px;
     margin: 1mm;
+    font-family: sans-serif;
 }
 .operator,
 .equals{
@@ -86,6 +90,7 @@ body{
 }
 .special{
     background-color: silver;
+    
 }
 #row-5{
     justify-self: space-evenly;

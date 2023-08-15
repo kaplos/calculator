@@ -11,7 +11,7 @@ document.querySelectorAll("button").forEach(element => {
             });
         });
 function eventDecider(element){
-            if(element==null){}
+    try{
             if(element.classList[0] == "operator"){
                 let operator2 = element.value;
                 if(continueOperations==2){
@@ -24,13 +24,17 @@ function eventDecider(element){
                     operator = element.value;
                     continueOperations++
                 }
+            }else{
+
             }
-            
             if(element.value == "clear" ){
                 operationArray = [];
                 continueOperations = 1;
                 console.log("cleared" )
                 console.log(`${operationArray}${continueOperations}`)
+            }
+            if(element.id =="mod"){
+                calcMod(operationArray);
             }
             if(element.id == "negate"){
                 NegateValue()
@@ -39,7 +43,8 @@ function eventDecider(element){
             if(element.value == "equals" ){
                 constNumber(operationArray);
                 operationArray.length=[];
-                clacDisplay.textContent = firstNumResult;
+                //clacDisplay.textContent="";
+                //clacDisplay.textContent = firstNumResult;
             }
             if(element.value == "Backspace"){
                 operationArray.pop();
@@ -55,14 +60,20 @@ function eventDecider(element){
                         displayArray.push(element.value);
                     }
                     clacDisplay.textContent = displayArray.join("");
-        }
+        }catch{}
+    }
     document.addEventListener('keydown',(event)=>{
         
         if(event.key=="0"){
             eventDecider(document.getElementById("zero"));
+        }if(event.getModifierState("Control") && event.key =="5"){
+            console.log("%");
+            eventDecider(document.getElementById("zero"));
+        }else{
+
+            console.log(event.key);
+            eventDecider(document.getElementById(event.key));
         }
-        console.log(event.key);
-        eventDecider(document.getElementById(event.key));
     })
     function NegateValue(){
              
@@ -86,7 +97,14 @@ function eventDecider(element){
     console.log(firstNum);
     console.log(operator);
     console.log(secondNum);
+    clacDisplay.textContent = firstNumResult;
     console.log(firstNumResult);
+    }
+    function calcMod(modNum){
+        let firstNum = Number(modNum.join(""));
+        firstNumResult = firstNum / 100;
+        operationArray = [];
+        console.log(firstNumResult);
     }
     function calculate(firstNum,operator,secondNum){
         switch(operator){
