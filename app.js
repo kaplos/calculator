@@ -6,9 +6,6 @@ let operator;
 let continueOperations = 1;
 let negated = false; 
     function main(){
-        //let clacDisplay = document.querySelector("#display-result");
-        //const button = document.getElementsByTagName('button');
-        const result = document.createElement('span');
         const decimal = document.getElementById(".");
         const negateButton = document.getElementById("negate")
         document.querySelectorAll("button").forEach(element => {
@@ -22,6 +19,7 @@ let negated = false;
                     if(element.classList[0] == "operator"){
                         decimal.disabled = false;
                         negateButton.disabled = false;
+                        negated = false;
                         let operator2 = element.value;
                         if(continueOperations==2){
                             constNumber(operationArray);
@@ -51,12 +49,15 @@ let negated = false;
                             negated = false;
                             operationArray.pop();
                             console.log(operationArray);
+                            displayArray.shift();
                         }else{
                             negated = true;
                             operationArray.push("@");
                             console.log(operationArray);
+                            displayArray.unshift("-");
                         }
                         console.log(operationArray);
+                        updateDisplay(displayArray.join(""));
                         //negateButton.disabled = true;
                     }
                     if(element.value == "Backspace"){
@@ -71,7 +72,7 @@ let negated = false;
                         console.log(`${operationArray} ${continueOperations}`)
                     }
                     
-                    if(element.classList[0] != "operand" && element.classList[0] != "decimal" ){
+                    if(element.classList[0] != "operand" && element.classList[0] != "decimal" && element.id != "negate"){
                         displayArray=[];
                     }else{
                         displayArray.push(element.value);
@@ -88,7 +89,6 @@ let negated = false;
                 }catch{}
             }
             document.addEventListener('keydown',(event)=>{
-                
                 if(event.key=="0"){
                     eventDecider(document.getElementById("zero"));
                 }if(event.getModifierState("Control") && event.key =="5"){
@@ -144,34 +144,6 @@ main();
         }
         return -Number(NumPosition.join(""));
     }
-    
-            /*if(indexOfnegate>indexOfOperator){
-                secondNum*=-1
-            }else if (indexOfnegate<indexOfOperator){
-                firstNum*=-1 
-            }else{
-                firstNum*=-1;
-                secondNum*=-1;
-            } 
-        }else{
-    
-            secondNum  = Number(Array.splice(indexOfOperator+1,Array.length).join(""));
-        
-        }
-    function splitArray(Array){
-        
-        
-
-        splitFirst =  Array.splice(0,indexOfOperator).join("");
-        splitSecond = Array.splice(indexOfOperator+1,Array.length).join("");
-        firstNum = removeNegatedElement(Array.indexOf("\""),splitFirst);
-        secondNum = removeNegatedElement(Array.indexOf("\""),splitSecond);
-    }*/
-   
-        
-        
-    
-    
     function calcMod(modNum){
         let firstNum = Number(modNum.join(""));
         firstNumResult = firstNum / 100;
@@ -182,17 +154,12 @@ main();
         switch(operator){
             case "+":
                 return  firstNum+= secondNum;
-                
             case "-":
                 return  firstNum-= secondNum;
-                
             case '/':
                 return  firstNum/= secondNum; 
-                
             case "*":
                 return  firstNum*= secondNum;
-                
         }
-        
     }
    
