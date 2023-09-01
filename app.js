@@ -1,4 +1,4 @@
-// just need to get the negate function to work on the first evaluation of the computer "firstNumResult"
+// just need to get the negate function to work on the first evaluation of the compute "firstNumResult"
 let operationArray = []
 let displayArray = [];
 let firstNumResult;
