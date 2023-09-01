@@ -1,10 +1,11 @@
-
+// just need to get the negate function to work on the first evaluation of the computer "firstNumResult"
 let operationArray = []
 let displayArray = [];
 let firstNumResult;
 let operator;
 let continueOperations = 1;
 let negated = false; 
+let empty = true;
     function main(){
         const decimal = document.getElementById(".");
         const negateButton = document.getElementById("negate")
@@ -13,7 +14,6 @@ let negated = false;
                         eventDecider(element);
                     });
                 });
-            
         function eventDecider(element){
             try{
                     if(element.classList[0] == "operator"){
@@ -50,15 +50,20 @@ let negated = false;
                             operationArray.pop();
                             console.log(operationArray);
                             displayArray.shift();
+                            //console.log(displayArray);
+
                         }else{
                             negated = true;
                             operationArray.push("@");
                             console.log(operationArray);
                             displayArray.unshift("-");
+                            //console.log(displayArray);
+                            //displayArray.push(firstNumResult);
+                           
                         }
-                        console.log(operationArray);
+                        console.log(displayArray);
+                        //console.log(operationArray);
                         updateDisplay(displayArray.join(""));
-                        //negateButton.disabled = true;
                     }
                     if(element.value == "Backspace"){
                         operationArray.pop();
@@ -73,7 +78,7 @@ let negated = false;
                     }
                     
                     if(element.classList[0] != "operand" && element.classList[0] != "decimal" && element.id != "negate"){
-                        displayArray=[];
+                            displayArray = [];
                     }else{
                         displayArray.push(element.value);
                     }
@@ -107,7 +112,6 @@ main();
     }
     function constNumber(Array){
         let indexOfOperator = Array.indexOf(operator);
-        
         let firstNum;
         let secondNum;
         let splitFirst; 
@@ -118,7 +122,8 @@ main();
         
             secondNum = removeNegatedElement(splitSecond.indexOf("@"),splitSecond);
         if(indexOfOperator -1 === -1){
-            firstNum = firstNumResult;
+            firstNum = firstNumResult; 
+            empty=false;
             calculate(firstNumResult,operator,secondNum);    
         }else{
             firstNum = removeNegatedElement(splitFirst.indexOf("@"),splitFirst);
