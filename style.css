@@ -95,6 +95,9 @@ body{
 #row-5{
     justify-self: space-evenly;
 }
+#divide{
+    font-size: 26px;
+}
 @media (max-width: 767px){
     #display-result,
     #calc-body,
